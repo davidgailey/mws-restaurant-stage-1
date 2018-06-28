@@ -42,7 +42,7 @@ ul, li {
 	color: #333;
 }
 a {
-	color: orange;
+	color: #007521;
 	text-decoration: none;
 }
 a:hover, a:focus {
@@ -186,18 +186,19 @@ nav h1 a {
 #restaurants-list p {
 	
 }
-#restaurants-list li a {
-	background-color: orange;
+#restaurants-list li button {
+	background-color: #007521;
 	border-bottom: 3px solid #eee;
 	border-radius: 0.5em;
 	color: #fff;
 	display: inline-block;
-	margin-top: 1em;
+  font-size: 1em;
+	margin-top: 0.5em;
 	padding: 1em;
 	text-align: center;
 	/*text-decoration: none;*/
 	text-transform: uppercase;
-	width: calc(100% - 2em);
+	width: 100%;
 }
 
 /* ====================== Restaurant Details ====================== */
@@ -216,8 +217,6 @@ nav h1 a {
 	width: 100%;
 }
 .inside #footer {
-	bottom: 0;
-	position: absolute;
 	
 }
 #restaurant-name {
@@ -226,7 +225,7 @@ nav h1 a {
 	font-size: 1.8em;
 	font-weight: 200;
 	letter-spacing: 0.1em;
-	/*margin: 15px 0 30px;*/
+  text-align: center;
 	text-transform: uppercase;
 	line-height: 2.1;
 }
@@ -243,27 +242,31 @@ nav h1 a {
   position: absolute;
   z-index: 500;
   border-radius: 2em;
-  right: 5%;
+  right: 1%;
   top: 2%;
   /*width: calc(100% - 1em);*/
 }
 #restaurant-cuisine {
 	background-color: #333;
-	color: #ddd;
-	font-size: 12pt;
+	color: #eee;
+	font-size: 0.8em;
 	font-weight: 300;
-	letter-spacing: 10px;
-	margin: 0 0 20px;
-	padding: 2px 0;
+	letter-spacing: 0.7em;
+	margin: 0 0 1em;
+	padding: 0.5em;
 	text-align: center;
 	text-transform: uppercase;
-	width: 90%;
+	width: 100%;
 }
 #restaurant-container, #reviews-container {
 	border-bottom: 1px solid #d9d9d9;
 	border-top: 1px solid #fff;
 	padding: 1em;
 	/*width: 50%;*/
+}
+.inside #restaurant-container {
+  padding: 1em 0;
+  width: 100%;
 }
 #reviews-container {
 	padding: 1em;
@@ -279,20 +282,25 @@ nav h1 a {
 #reviews-list li {
 	background-color: #fff;
 	border: 2px solid #f3f3f3;
+  border-radius: 0.5em;
 	display: block;
 	list-style-type: none;
-	margin: 0 0 2em;
+	margin: 0 0 1.5em;
 	overflow: hidden;
-	padding: 0 20px 20px;
+	padding: 1em;
 	position: relative;
 }
 #reviews-list li p {
 	/*margin: 0 0 10px;*/
 }
-
+#restaurant-container h2 {
+  text-align: center;
+  text-transform: uppercase;
+}
 #restaurant-hours{
   width: 80%;
-  margin: 0 auto;
+  margin: 0 auto 1em;
+  max-width: 360px;
 }
 #restaurant-hours td {
 	color: #333;

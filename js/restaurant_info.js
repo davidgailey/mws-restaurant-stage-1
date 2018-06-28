@@ -106,10 +106,10 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
  */
 fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
   const hours = document.getElementById('restaurant-hours');
-  let count = 0;
+  //let count = 0;
   for (let key in operatingHours) {
     let row = document.createElement('tr');
-    row.setAttribute('className',count%2);
+    //row.setAttribute('className',count%2);
 
     let day = document.createElement('td');
     day.className = 'day';
@@ -161,8 +161,18 @@ createReviewHTML = (review) => {
   li.appendChild(date);
 
   const rating = document.createElement('p');
-  rating.innerHTML = `Rating: ${review.rating}`;
+  rating.innerHTML = `Rating: `;
+  for (let i = 1; i <= 5; i++) {
+    if(i <= review.rating){ 
+      rating.innerHTML += '★';
+    }else{
+      rating.innerHTML += '☆';
+    } 
+  }
+  //rating.innerHTML = `Rating: ${review.rating} / 5`;
   li.appendChild(rating);
+
+  li.appendChild(document.createElement('hr'));
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
