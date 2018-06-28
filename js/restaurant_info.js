@@ -106,14 +106,18 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
  */
 fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
   const hours = document.getElementById('restaurant-hours');
+  let count = 0;
   for (let key in operatingHours) {
-    const row = document.createElement('tr');
+    let row = document.createElement('tr');
+    row.setAttribute('className',count%2);
 
-    const day = document.createElement('td');
+    let day = document.createElement('td');
+    day.className = 'day';
     day.innerHTML = key;
     row.appendChild(day);
 
-    const time = document.createElement('td');
+    let time = document.createElement('td');
+    time.className = 'time';
     time.innerHTML = operatingHours[key];
     row.appendChild(time);
 
