@@ -176,19 +176,9 @@ nav h1 a {
 	display: block;
 	margin: 0;
 	max-width: 100%;
-	min-height: 248px;
 	min-width: 100%;
 }
-#restaurants-list li h1 {
-	color: #f18200;
-	font-family: Arial,sans-serif;
-	font-size: 14pt;
-	font-weight: 200;
-	letter-spacing: 0;
-	line-height: 1.3;
-	margin: 20px 0 10px;
-	text-transform: uppercase;
-}
+
 #restaurants-list p {
 	
 }
@@ -320,7 +310,7 @@ nav h1 a {
 /* ====================== Flexbox Layout ====================== */
 
 main {
-	max-width: 1400px;
+	max-width: 1000px;
 	margin: auto;
 }
 
@@ -351,19 +341,19 @@ main, #restaurants-list, #restaurant-hours tr {
 	/*#map-container{
 		width:66%;
 	}*/
-	#filter-options{
+	/*#filter-options{
 		width: calc(34% - 2em);
-	}
+	}*/
 	#map{
 		height:500px;
 	}
-	#filter-options select {
+	/*#filter-options select {
 		width: 100% ;
-	}
+	}*/
 
 }
 
-@media screen and (min-width:1200px) {
+@media screen and (min-width:1000px) {
 
 	#restaurants-list li {
 		width: calc(33.3% - 3.3em);
