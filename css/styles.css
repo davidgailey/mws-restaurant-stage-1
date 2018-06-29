@@ -73,6 +73,12 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 	text-transform: uppercase;
 }
 
+/* ====================== Header ====================== */
+
+/*header h1::before {
+  content: '🍴';
+}*/
+
 /* ====================== Navigation ====================== */
 nav {
 	padding:1.2em;
@@ -230,7 +236,8 @@ nav h1 a {
 	line-height: 2.1;
 }
 #restaurant-img {
-	width: 90%;
+	max-width: 100%;
+  margin 0 auto;
 }
 #restaurant-address {
   background-color: #007521;
