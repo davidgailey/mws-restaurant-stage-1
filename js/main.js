@@ -175,6 +175,8 @@ createRestaurantHTML = (restaurant) => {
   address.innerHTML = restaurant.address;
   li.append(address);
 
+  li.append(document.createElement('br'));
+
   const more = document.createElement('button');
   more.innerHTML = 'View Details';
   more.addEventListener('click',function(){

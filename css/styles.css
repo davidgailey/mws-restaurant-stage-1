@@ -189,10 +189,12 @@ nav h1 a {
 	color: #fff;
 	display: inline-block;
   font-size: 1em;
-	margin-top: 0.5em;
+
+  /*https://wpbeaches.com/aligning-last-item-bottom-container-flexbox/*/
+	margin-top: auto;
+
 	padding: 1em;
 	text-align: center;
-	/*text-decoration: none;*/
 	text-transform: uppercase;
 	width: 100%;
 }
@@ -322,6 +324,9 @@ main, #restaurants-list, #restaurant-hours tr {
 	width: 100%;
 }
 #restaurants-list li{
+  /*https://wpbeaches.com/aligning-last-item-bottom-container-flexbox/*/
+  display: flex;
+  flex-flow: column nowrap;
 	width: calc(100% - 3em);
 }
 #restaurant-hours td{
