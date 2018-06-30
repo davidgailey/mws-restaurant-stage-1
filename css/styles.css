@@ -151,6 +151,14 @@ nav h1 a {
 	padding: 0.5em 0;
 	width: calc(50% - 0.7em); 
 }
+#filter-options label {
+  color: #fff;
+  display: inline-block;
+  font-size: 0.8em;
+  margin: 0.2em 0.5em 0.2em 0;
+  padding: 0.5em 0;
+  width: calc(50% - 0.7em); 
+}
 
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
@@ -335,9 +343,13 @@ main, #restaurants-list, #restaurant-hours tr {
 
 @media screen and (min-width:600px) {
 
+  #filter-options label {
+    font-size: 1em;
+  }
 	#restaurants-list li {
 		width: calc(50% - 3.3em);
 	}
+
 
 }
 
