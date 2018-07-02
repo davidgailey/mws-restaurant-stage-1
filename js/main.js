@@ -179,6 +179,7 @@ createRestaurantHTML = (restaurant) => {
 
   const more = document.createElement('button');
   more.innerHTML = 'View Details';
+  more.setAttribute('aria-label', `view details for ${restaurant.name} restaurant`);
   more.addEventListener('click',function(){
     location.href=DBHelper.urlForRestaurant(restaurant);
   });
@@ -213,6 +214,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+// regiter service worker to cache static assets
 registerSW = () => {
   if (!navigator.serviceWorker) return;
 
@@ -225,4 +227,6 @@ registerSW = () => {
   });
 
 }
+
+registerSW();
 
