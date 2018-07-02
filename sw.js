@@ -7,7 +7,10 @@ const assets = [
 					'./data/restaurants.json',
 					'./js/dbhelper.js',
 					'./js/main.js',
-					'./js/restaurant_info.js'
+					'./js/restaurant_info.js',
+					'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
+					'//normalize-css.googlecode.com/svn/trunk/normalize.css',
+					'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css'
 				];
 
 self.addEventListener('install', event => {

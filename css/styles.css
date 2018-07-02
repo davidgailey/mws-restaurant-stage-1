@@ -278,7 +278,7 @@ nav h1 a {
 #reviews-container {
 	padding: 1em;
 }
-#reviews-container h2 {
+#reviews-container h3 {
 	color: #007521;
 	font-weight: 300;
 }
@@ -300,7 +300,7 @@ nav h1 a {
 #reviews-list li p {
 	/*margin: 0 0 10px;*/
 }
-#restaurant-container h2 {
+#restaurant-container h3 {
   text-align: center;
   text-transform: uppercase;
 }
