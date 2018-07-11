@@ -1,4 +1,4 @@
-const staticAssetsCacheName = 'mws-restaurant-static-v1';
+const staticAssetsCacheName = 'mws-restaurant-static-v2';
 const assets = [
 					'/',
 					'./index.html',
@@ -9,7 +9,6 @@ const assets = [
 					'./js/main.js',
 					'./js/restaurant_info.js',
 					'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
-					'//normalize-css.googlecode.com/svn/trunk/normalize.css',
 					'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css'
 				];
 
