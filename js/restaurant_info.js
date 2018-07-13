@@ -89,10 +89,11 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 	const image = document.getElementById('restaurant-img');
 	image.className = 'restaurant-img'
 	image.src = DBHelper.imageUrlForRestaurant(restaurant);
-	if(restaurant.photograph === "undefined"){
+
+	if(typeof restaurant.photograph === "undefined"){
 		image.srcset = `/dist/img/small/no-photo.jpg 300w, 
 						/dist/img/medium/no-photo.jpg 600w,
-						/dist/img/large/no-photo.jpg 800w`;
+						/dist/img/large/no-photo-banner.jpg 800w`;
 		image.alt = 'no photograph available for ' + restaurant.name;
 	}else{
 		image.srcset = `/dist/img/small/${restaurant.photograph} 300w, 
