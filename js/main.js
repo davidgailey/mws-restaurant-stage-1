@@ -161,7 +161,7 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = 'promotional photograph for ' + restaurant.name;
+  image.alt = typeof restaurant.photograph === "undefined" ? 'no photograph available for ' + restaurant.name :'promotional photograph for ' + restaurant.name;
   li.append(image);
 
   const name = document.createElement('h3');
