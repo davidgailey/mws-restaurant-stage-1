@@ -96,9 +96,9 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 						/dist/img/large/no-photo-banner.jpg 800w`;
 		image.alt = 'no photograph available for ' + restaurant.name;
 	}else{
-		image.srcset = `/dist/img/small/${restaurant.photograph} 300w, 
-						/dist/img/medium/${restaurant.photograph} 600w,
-						/dist/img/large/${restaurant.photograph} 800w`;
+		image.srcset = `/dist/img/small/${restaurant.photograph}.jpg 300w, 
+						/dist/img/medium/${restaurant.photograph}.jpg 600w,
+						/dist/img/large/${restaurant.photograph}.jpg 800w`;
 		image.alt = 'promotional photograph for ' + restaurant.name;
 	}
 
