@@ -1,3 +1,5 @@
+import idb from 'idb';
+
 const staticAssetsCacheName = 'mws-restaurant-static-v2';
 const assets = [
 					'/',

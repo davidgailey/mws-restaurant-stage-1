@@ -4,8 +4,7 @@
 	"description": "--- #### _Three Stage Course Material Project - Restaurant Reviews_",
 	"main": "sw.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "webpack"
+		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
 		"type": "git",
