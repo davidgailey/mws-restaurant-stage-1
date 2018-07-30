@@ -1,26 +1,14 @@
-{
-	"name": "mws-restaurant",
-	"version": "1.0.0",
-	"description": "--- #### _Three Stage Course Material Project - Restaurant Reviews_",
-	"main": "sw.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+const path = require('path');
+
+module.exports = {
+	mode: 'development',
+	devtool: 'cheap-module-eval-source-map',
+	entry: {
+		sw: './src/sw.js',
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/davidgailey/mws-restaurant-stage-1.git"
+	output: {
+		filename: '[name].js',
+		path: path.resolve(__dirname, ''),
+		publicPath: '/'
 	},
-	"author": "David Gailey",
-	"license": "ISC",
-	"bugs": {
-		"url": "https://github.com/davidgailey/mws-restaurant-stage-1/issues"
-	},
-	"homepage": "https://github.com/davidgailey/mws-restaurant-stage-1#readme",
-	"devDependencies": {
-		"webpack": "^4.16.3",
-		"webpack-cli": "^3.1.0"
-	},
-	"dependencies": {
-		"idb": "^2.1.3"
-	}
-}
+};
