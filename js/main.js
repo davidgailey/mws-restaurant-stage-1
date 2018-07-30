@@ -219,7 +219,8 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 registerSW = () => {
   if (!navigator.serviceWorker) return;
 
-  navigator.serviceWorker.register('/sw.js').then( reg => {
+  // using github pages for https - https://davidgailey.github.io/mws-restaurant-stage-1/sw.js
+  navigator.serviceWorker.register('/mws-restaurant-stage-1/sw.js').then( reg => {
     
     console.log('register serviceWorker success ', reg.scope);
     
