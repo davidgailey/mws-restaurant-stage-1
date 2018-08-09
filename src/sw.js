@@ -57,7 +57,7 @@ self.addEventListener('fetch', fetchEvent => {
 	}
 });
 
-handleAPIRequest = (fetchEvent, id) => {
+const handleAPIRequest = (fetchEvent, id) => {
 	
 	fetchEvent.respondWith(
 
