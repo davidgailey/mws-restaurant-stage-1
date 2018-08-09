@@ -91,14 +91,14 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 	image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
 	if(typeof restaurant.photograph === "undefined"){
-		image.srcset = `/dist/img/small/no-photo.jpg 300w, 
-						/dist/img/medium/no-photo.jpg 600w,
-						/dist/img/large/no-photo-banner.jpg 800w`;
+		image.srcset = `https://davidgailey.github.io/mws-restaurant-stage-1/dist/img/small/no-photo.jpg 300w, 
+						https://davidgailey.github.io/mws-restaurant-stage-1/dist/img/medium/no-photo.jpg 600w,
+						https://davidgailey.github.io/mws-restaurant-stage-1/dist/img/large/no-photo-banner.jpg 800w`;
 		image.alt = 'no photograph available for ' + restaurant.name;
 	}else{
-		image.srcset = `/dist/img/small/${restaurant.photograph}.jpg 300w, 
-						/dist/img/medium/${restaurant.photograph}.jpg 600w,
-						/dist/img/large/${restaurant.photograph}.jpg 800w`;
+		image.srcset = `https://davidgailey.github.io/mws-restaurant-stage-1/dist/img/small/${restaurant.photograph}.jpg 300w, 
+						https://davidgailey.github.io/mws-restaurant-stage-1/dist/img/medium/${restaurant.photograph}.jpg 600w,
+						https://davidgailey.github.io/mws-restaurant-stage-1/dist/img/large/${restaurant.photograph}.jpg 800w`;
 		image.alt = 'promotional photograph for ' + restaurant.name;
 	}
 
