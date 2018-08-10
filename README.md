@@ -28,5 +28,9 @@ This repository uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://w
 
 Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future proofing JavaScript code. As much as possible, try to maintain use of ES6 in any additional JavaScript you write. 
 
+### Note about Webpack
+
+The service worker script (sw.js) is generated via webpack from the sw.js file in /src.  To build this, make sure you have [Node](https://nodejs.org/) installed, run 'npm install' on your command line from the project root directory, and then run 'npm run build'.  Optionally, you can run 'npm run watch' to have it automatically pick up changes from src/sw.js. 
+
 
 
