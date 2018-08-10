@@ -6,8 +6,7 @@ const idbPromise = idb.open('mws-restaurant', 1, upgradeDB => {
 			upgradeDB.createObjectStore('restaurants', {
 				keyPath: 'id'
 			});
-			// case 1:
-			// 	upgradeDB.createObjectStore('restaurants', {keyPath: 'id'});
+			
 	}
 });
 
