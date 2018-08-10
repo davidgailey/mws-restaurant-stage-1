@@ -67,15 +67,16 @@ const handleAPIRequest = (fetchEvent, id) => {
 				return idb.transaction('restaurants').objectStore('restaurants').get(id);
 			})
 			.then(restaurantInfo => {
-				console.log(restaurantInfo);
 				if (restaurantInfo && restaurantInfo.data){
 					// if yes then return restaurantInfo
 					// means earlier idb transaction succeeded
 					// return new Response(restaurantInfo.data);
+					console.log('restaurant info returned from indexedDB');
 					return restaurantInfo.data
 				}else{
 					// or if json is not stored in the idb, fetch it
 					// means earlier idb transaction failed
+					console.log('restaurant info will return from fetch');
 					return(
 						fetch(fetchEvent.request)
 						.then(fetchResponse => fetchResponse.json())
