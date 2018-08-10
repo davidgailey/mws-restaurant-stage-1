@@ -75,20 +75,22 @@ const handleAPIRequest = (fetchEvent, id) => {
 				}else{
 					// or if json is not stored in the idb, fetch it
 					// means earlier idb transaction failed
-					fetch(fetchEvent.request)
-					.then(fetchResponse => fetchResponse.json())
-					.then(json => {
-						return idbPromise.then(db => {
-							// new transaction
-							let tx = db.transaction('restaurants', 'readwrite');
-							// select store
-							let store = tx.objectStore('restaurants');
-							// write json to the idb store
-							store.put({ id: id, data: json });
-							// return the json to next 'then' statement
-							return new Response(JSON.stringify(json));
-						});
-					})
+					return(
+						fetch(fetchEvent.request)
+						.then(fetchResponse => fetchResponse.json())
+						.then(json => {
+							return idbPromise.then(db => {
+								// new transaction
+								let tx = db.transaction('restaurants', 'readwrite');
+								// select store
+								let store = tx.objectStore('restaurants');
+								// write json to the idb store
+								store.put({ id: id, data: json });
+								// return the json to next 'then' statement
+								return new Response(JSON.stringify(json));
+							});
+						})
+					)
 				}
 
 			})
