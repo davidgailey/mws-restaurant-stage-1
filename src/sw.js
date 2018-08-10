@@ -13,13 +13,14 @@ const idbPromise = idb.open('mws-restaurant', 1, upgradeDB => {
 const staticAssetsCacheName = 'mws-restaurant-static-v2';
 const assets = [
 	'/',
-	'./index.html',
-	'./restaurant.html',
-	'./css/styles.css',
-	//'./data/restaurants.json',
-	'./js/dbhelper.js',
-	'./js/main.js',
-	'./js/restaurant_info.js',
+	'/mws-restaurant-stage-1/',
+	'./mws-restaurant-stage-1/index.html',
+	'./mws-restaurant-stage-1/restaurant.html',
+	'./mws-restaurant-stage-1/css/styles.css',
+	//'./mws-restaurant-stage-1/data/restaurants.json',
+	'./mws-restaurant-stage-1/js/dbhelper.js',
+	'./mws-restaurant-stage-1/js/main.js',
+	'./mws-restaurant-stage-1/js/restaurant_info.js',
 	'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
 	'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css'
 ];
