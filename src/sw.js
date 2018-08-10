@@ -71,7 +71,8 @@ const handleAPIRequest = (fetchEvent, id) => {
 				if (restaurantInfo && restaurantInfo.data){
 					// if yes then return restaurantInfo
 					// means earlier idb transaction succeeded
-					return new Response(restaurantInfo.data);
+					// return new Response(restaurantInfo.data);
+					return restaurantInfo.data
 				}else{
 					// or if json is not stored in the idb, fetch it
 					// means earlier idb transaction failed
@@ -87,12 +88,14 @@ const handleAPIRequest = (fetchEvent, id) => {
 								// write json to the idb store
 								store.put({ id: id, data: json });
 								// return the json to next 'then' statement
-								return new Response(JSON.stringify(json));
+								return json;
 							});
 						})
 					)
 				}
 
+			}).then(response => {
+				return new Response(JSON.stringify(response));
 			})
 			
 			.catch(error => {
