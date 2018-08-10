@@ -14,6 +14,9 @@ const staticAssetsCacheName = 'mws-restaurant-static-v2';
 const assets = [
 	'/',
 	'https://davidgailey.github.io/mws-restaurant-stage-1/',
+	'https://davidgailey.github.io/mws-restaurant-stage-1/manifest.json',
+	'https://davidgailey.github.io/mws-restaurant-stage-1/icons/icons-192.png',
+	'https://davidgailey.github.io/mws-restaurant-stage-1/icons/icons-512.png',
 	'https://davidgailey.github.io/mws-restaurant-stage-1/index.html',
 	'https://davidgailey.github.io/mws-restaurant-stage-1/restaurant.html',
 	'https://davidgailey.github.io/mws-restaurant-stage-1/css/styles.css',
