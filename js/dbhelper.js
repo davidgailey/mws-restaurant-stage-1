@@ -34,7 +34,7 @@ class DBHelper {
 		
 		fetch(DBHelper.DATABASE_URL).then(response => response.json())
 		.then(json => callback(null,json))
-		.catch(e => console.error(e, 'image'));
+		.catch(e => console.error(e, ' DBHelper.DATABASE_URL in fetchRestaurants'));
 
 
 		
