@@ -23,6 +23,10 @@ const assets = [
 	'https://davidgailey.github.io/mws-restaurant-stage-1/js/dbhelper.js',
 	'https://davidgailey.github.io/mws-restaurant-stage-1/js/main.js',
 	'https://davidgailey.github.io/mws-restaurant-stage-1/js/restaurant_info.js',
+	'https://davidgailey.github.io/mws-restaurant-stage-1/dist/img/small/no-photo.jpg',
+	'https://davidgailey.github.io/mws-restaurant-stage-1/dist/img/medium/no-photo.jpg',
+	'https://davidgailey.github.io/mws-restaurant-stage-1/dist/img/large/no-photo.jpg',
+	'https://davidgailey.github.io/mws-restaurant-stage-1/dist/img/large/no-photo-banner.jpg',
 	'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
 	'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css'
 ];
