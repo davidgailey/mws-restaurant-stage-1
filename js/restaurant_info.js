@@ -90,14 +90,22 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 	favorite.innerHTML = isFavorite ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
 	favorite.addEventListener('click',event => {
 		// toggle element state
-		favorite.dataset.state = isFavorite ? false : true;
+		// favorite.dataset.state = isFavorite ? false : true;
+
+		// set flag to avoid double clicks
+		let flag; 
 
 		// if online, make call to api
-		if(navigator.onLine){
-			// fetch
-			// http://localhost:1337/restaurants/<restaurant_id>/?is_favorite=true
-		}else{
+		if(navigator.onLine && flag !== false){
+			fetch('http://localhost:1337/restaurants/<restaurant_id>/?is_favorite=true')
+				.then(response => {
+					favorite.dataset.state = isFavorite ? false : true;
+					flag = true; // allow to click button again
+				});
+				
 		// if offline, update cache and add api call to queque
+		}else{
+	
 
 		}
 
