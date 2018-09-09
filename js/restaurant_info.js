@@ -98,7 +98,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
 		// if online, make call to api
 		if(navigator.onLine && flag !== false){
-			let query = favorite.dataset.state ? false : true;
+			let query = favorite.dataset.state === "true" ? false : true;
 			fetch(`http://localhost:1337/restaurants/${favorite.dataset.id}/?is_favorite=${query}`, {method: "PUT"})
 				.then(response => {
 					if(response.status === 200){
