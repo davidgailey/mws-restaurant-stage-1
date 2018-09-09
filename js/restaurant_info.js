@@ -87,6 +87,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 	const isFavorite = typeof restaurant.is_favorite !== "undefined" && restaurant.is_favorite ? true : false;
 	const favorite = document.getElementById('restaurant-favorite');
 	favorite.dataset.state = isFavorite;
+	favorite.dataset.id = restaurant.id;
 	favorite.innerHTML = isFavorite ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
 	favorite.addEventListener('click',event => {
 		// toggle element state
@@ -97,12 +98,13 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
 		// if online, make call to api
 		if(navigator.onLine && flag !== false){
-			fetch('http://localhost:1337/restaurants/<restaurant_id>/?is_favorite=true')
+			let query = favorite.dataset.state ? false : true;
+			fetch(`http://localhost:1337/restaurants/${favorite.dataset.id}/?is_favorite=${query}`)
 				.then(response => {
 					favorite.dataset.state = isFavorite ? false : true;
 					flag = true; // allow to click button again
 				});
-				
+
 		// if offline, update cache and add api call to queque
 		}else{
 	
