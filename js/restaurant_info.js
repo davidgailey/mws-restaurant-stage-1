@@ -83,6 +83,11 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 	const name = document.getElementById('restaurant-name');
 	name.innerHTML = restaurant.name;
 
+	debugger;
+	const isFavorite = typeof restaurant.is_favorite !== "undefined" && restaurant.is_favorite ? true : false;
+	const favorite = document.getElementById('restaurant-favorite');
+	favorite.innerHTML = isFavorite ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
+
 	const address = document.getElementById('restaurant-address');
 	address.innerHTML = restaurant.address;
 
