@@ -101,8 +101,12 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 			let query = favorite.dataset.state ? false : true;
 			fetch(`http://localhost:1337/restaurants/${favorite.dataset.id}/?is_favorite=${query}`)
 				.then(response => {
-					favorite.dataset.state = isFavorite ? false : true;
-					flag = true; // allow to click button again
+					if(response.status === 200){
+						favorite.dataset.state = query;
+						favorite.innerHTML = query ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
+						flag = true; // allow to click button again
+					}
+					
 				});
 
 		// if offline, update cache and add api call to queque
