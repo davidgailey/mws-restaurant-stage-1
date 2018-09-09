@@ -83,10 +83,27 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 	const name = document.getElementById('restaurant-name');
 	name.innerHTML = restaurant.name;
 
-	debugger;
+	//debugger;
 	const isFavorite = typeof restaurant.is_favorite !== "undefined" && restaurant.is_favorite ? true : false;
 	const favorite = document.getElementById('restaurant-favorite');
+	favorite.dataset.state = isFavorite;
 	favorite.innerHTML = isFavorite ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
+	favorite.addEventListener('click',event => {
+		// toggle element state
+		favorite.dataset.state = isFavorite ? false : true;
+
+		// if online, make call to api
+		if(navigator.onLine){
+			// fetch
+			// http://localhost:1337/restaurants/<restaurant_id>/?is_favorite=true
+		}else{
+		// if offline, update cache and add api call to queque
+
+		}
+
+		
+
+	});
 
 	const address = document.getElementById('restaurant-address');
 	address.innerHTML = restaurant.address;
