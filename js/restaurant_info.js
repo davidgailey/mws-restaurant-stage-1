@@ -99,12 +99,18 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 		// if online, make call to api
 		if(navigator.onLine && flag !== false){
 			let query = favorite.dataset.state === "true" ? false : true;
+			flag = false; // prevent doing fetch and setting state on multiple clicks
 			fetch(`http://localhost:1337/restaurants/${favorite.dataset.id}/?is_favorite=${query}`, {method: "PUT"})
 				.then(response => {
 					if(response.status === 200){
+						// set state on element
 						favorite.dataset.state = query;
+						// set inner html of button
 						favorite.innerHTML = query ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
-						flag = true; // allow to click button again
+						// set appropriate class on element
+						query ? favorite.classList.add('favorited') : favorite.classList.remove('favorited');
+						// allow to click button again
+						flag = true; 
 					}
 					
 				});
