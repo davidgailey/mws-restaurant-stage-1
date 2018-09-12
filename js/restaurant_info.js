@@ -89,7 +89,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 	favorite.dataset.state = isFavorite;
 	favorite.dataset.id = restaurant.id;
 	favorite.querySelector('button').innerHTML = isFavorite ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
-	query ? favorite.classList.add('favorited') : favorite.classList.remove('favorited');
+	isFavorite ? favorite.classList.add('favorited') : favorite.classList.remove('favorited');
 	
 	favorite.addEventListener('click',event => {
 		// toggle element state
