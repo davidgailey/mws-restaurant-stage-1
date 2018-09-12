@@ -322,7 +322,7 @@ nav h1 a {
 #restaurant-favorite .heart {
 	fill: #777777;
 }
-#restaurant-favorite.favorited {
+#restaurant-favorite.favorited .heart {
 	fill: #dd0000;
 }
 

@@ -106,7 +106,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 						// set state on element
 						favorite.dataset.state = query;
 						// set inner html of button
-						favorite.innerHTML = query ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
+						favorite.querySelector('button').innerHTML = query ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
 						// set appropriate class on element
 						query ? favorite.classList.add('favorited') : favorite.classList.remove('favorited');
 						// allow to click button again
