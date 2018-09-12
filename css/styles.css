@@ -320,7 +320,8 @@ nav h1 a {
 	left: 9999px;
 }
 #restaurant-favorite .heart {
-	fill: #777777;
+	fill: #eeeeee;
+	box-shadow: 1px 1px 5px rgba(255, 255, 255, .2);
 }
 #svg_heart {
 	position: absolute;
