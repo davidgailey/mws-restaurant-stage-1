@@ -88,7 +88,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 	const favorite = document.getElementById('restaurant-favorite');
 	favorite.dataset.state = isFavorite;
 	favorite.dataset.id = restaurant.id;
-	favorite.innerHTML = isFavorite ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
+	favorite.querySelector('button').innerHTML = isFavorite ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
 	favorite.addEventListener('click',event => {
 		// toggle element state
 		// favorite.dataset.state = isFavorite ? false : true;
