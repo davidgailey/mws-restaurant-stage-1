@@ -315,6 +315,16 @@ nav h1 a {
 #restaurant-hours .day {
   text-align: center;
 }
+#restaurant-favorite {
+	position: relative;
+	float: right;
+}
+#restaurant-favorite .heart {
+	fill: #777777;
+}
+#restaurant-favorite.favorited {
+	fill: #dd0000;
+}
 
 
 /* ====================== Flexbox Layout ====================== */
