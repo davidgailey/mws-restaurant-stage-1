@@ -70,6 +70,31 @@
 
     <!-- Beginning reviews -->
     <section class="box" id="reviews-container">
+      <form action="http://localhost:1337/reviews/">
+        <label>
+          <span>Name</span>
+          <input type="text" />
+        </label>
+
+        <label>
+          <span>Rating</span>
+          <select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Review</span>
+          <textarea name="" id="" cols="30" rows="10"></textarea>
+        </label>
+
+        <button type="submit">Post Review</button>
+
+      </form>
       <ul id="reviews-list"></ul>
     </section>
     <!-- End reviews -->
