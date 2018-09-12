@@ -315,12 +315,17 @@ nav h1 a {
 #restaurant-hours .day {
   text-align: center;
 }
-#restaurant-favorite {
-	position: relative;
-	float: right;
+#restaurant-favorite button {
+	position: absolute;
+	left: 9999px;
 }
 #restaurant-favorite .heart {
 	fill: #777777;
+}
+#svg_heart {
+	position: absolute;
+	right: 0;
+	width: 11%;
 }
 #restaurant-favorite.favorited .heart {
 	fill: #dd0000;
