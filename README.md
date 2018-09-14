@@ -32,5 +32,11 @@ Most of the code in this project has been written to the ES6 JavaScript specific
 
 The service worker script (sw.js) is generated via webpack from the sw.js file in /src.  To build this, make sure you have [Node](https://nodejs.org/) is installed, run 'npm install' on your command line from the project root directory, and then run 'npm run build'.  Optionally, you can run 'npm run watch' to have it automatically pick up changes from src/sw.js. 
 
+### Github pages link
 
+This repo's master branch is hosted through Github pages at https://davidgailey.github.io/mws-restaurant-stage-1/.  Github pages provide https support so it is easy to test service worker changes. 
+
+### API server
+
+Stage three of this project relies on a locally run Node,Sails API server for all the restaurant data.  You can learn more about setting up that server here https://github.com/udacity/mws-restaurant-stage-3
 
