@@ -204,6 +204,19 @@ const fillReviewsHTML = (id = self.restaurant.id) => {
 		return response.json();
 	}).then(function(json){
 		console.info('json :',json);
+		if (json.length === 0) {
+			const noReviews = document.createElement('p');
+			noReviews.innerHTML = 'No reviews yet!';
+			container.appendChild(noReviews);
+			return;
+		}
+
+		const ul = document.getElementById('reviews-list');
+		for (let review of json) {
+			ul.appendChild(createReviewHTML(review));
+		}
+		container.appendChild(ul);
+
 	});
 	
 
