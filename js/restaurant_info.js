@@ -200,8 +200,10 @@ const fillReviewsHTML = (id = self.restaurant.id) => {
 
 	// api call to get reviews for a specific restaurant http://localhost:1337/reviews/?restaurant_id=<restaurant_id>
 	fetch('http://localhost:1337/reviews/?restaurant_id=' + id).then(function(response) {
-		console.info('response: ',response);
-		//return response;
+		//console.info('response: ',response);
+		return response.json();
+	}).then(function(json){
+		console.info('json :',json);
 	});
 	
 
