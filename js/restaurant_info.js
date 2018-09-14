@@ -189,24 +189,33 @@ const fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hour
 /**
  * Create all reviews HTML and add them to the webpage.
  */
-const fillReviewsHTML = (reviews = self.restaurant.reviews) => {
-	console.info("reviews: ",reviews);
+const fillReviewsHTML = (id = self.restaurant.id) => {
+	console.info("id: ",id);
+
+	// build basic container and title
 	const container = document.getElementById('reviews-container');
 	const title = document.createElement('h3');
 	title.innerHTML = 'Reviews';
 	container.appendChild(title);
 
-	if (!reviews) {
-		const noReviews = document.createElement('p');
-		noReviews.innerHTML = 'No reviews yet!';
-		container.appendChild(noReviews);
-		return;
-	}
-	const ul = document.getElementById('reviews-list');
-	reviews.forEach(review => {
-		ul.appendChild(createReviewHTML(review));
+	// api call to get reviews for a specific restaurant http://localhost:1337/reviews/?restaurant_id=<restaurant_id>
+	fetch('http://localhost:1337/reviews/?restaurant_id=' + id).then(function(response) {
+		console.info('response':response);
+		//return response;
 	});
-	container.appendChild(ul);
+	
+
+	// if (!reviews) {
+	// 	const noReviews = document.createElement('p');
+	// 	noReviews.innerHTML = 'No reviews yet!';
+	// 	container.appendChild(noReviews);
+	// 	return;
+	// }
+	// const ul = document.getElementById('reviews-list');
+	// reviews.forEach(review => {
+	// 	ul.appendChild(createReviewHTML(review));
+	// });
+	// container.appendChild(ul);
 }
 
 /**
