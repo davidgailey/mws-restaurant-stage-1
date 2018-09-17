@@ -70,15 +70,15 @@
 
     <!-- Beginning reviews -->
     <section class="box" id="reviews-container">
-      <form action="http://localhost:1337/reviews/">
+      <form id="submit-review" action="http://localhost:1337/reviews/">
         <label>
           <span>Name</span>
-          <input type="text" />
+          <input id="name" type="text" />
         </label>
 
         <label>
           <span>Rating</span>
-          <select>
+          <select id="rating">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -89,12 +89,13 @@
 
         <label>
           <span>Review</span>
-          <textarea name="" id="" cols="30" rows="10"></textarea>
+          <textarea id="comment" cols="30" rows="10"></textarea>
         </label>
 
         <button type="submit">Post Review</button>
 
       </form>
+
       <ul id="reviews-list"></ul>
     </section>
     <!-- End reviews -->

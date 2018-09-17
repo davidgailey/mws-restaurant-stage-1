@@ -293,3 +293,13 @@ const getParameterByName = (name, url) => {
 		return '';
 	return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+const saveReview = () => {
+	const name = document.getElementById('name').value;
+	const rating = document.getElementById('rating').value;
+	const comment = document.getElementById('comment').value;
+
+	// save review to cache
+
+	// put review in queque
+}
