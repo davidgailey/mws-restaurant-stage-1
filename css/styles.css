@@ -334,6 +334,15 @@ nav h1 a {
 	stroke: #eeeeee;
 }
 
+form label {
+	display: block;
+}
+
+input, textarea {
+	width: 80%;
+	max-width: 600px;
+}
+
 
 /* ====================== Flexbox Layout ====================== */
 
