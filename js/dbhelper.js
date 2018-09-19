@@ -8,10 +8,18 @@ class DBHelper {
 	 * Change this to restaurants.json file location on your server.
 	 */
 	static get DATABASE_URL() {
-		const port = 8000 // Change this to your server port
+		const port = 1337 // Change this to your server port
 		//return `http://localhost:${port}/data/restaurants.json`;
 		//return `https://raw.githubusercontent.com/udacity/mws-restaurant-stage-1/master/data/restaurants.json`;
-		return 'http://localhost:1337/restaurants';
+		return `http://localhost:${port}/restaurants`;
+	}
+
+	static get DATABASE_REVIEWS_URL() { 
+		// https://github.com/udacity/mws-restaurant-stage-3
+		// For a GET request, this will get all restaurant info
+		// For a POST request, this will create a new review
+		const port = 1337; // Change this to your server port
+		return `http://localhost:${port}/reviews`;
 	}
 
 	/**

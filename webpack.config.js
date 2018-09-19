@@ -6,7 +6,8 @@ module.exports = {
 	mode: 'development',
 	devtool: 'cheap-module-eval-source-map',
 	entry: {
-		sw: './src/sw.js',
+		'/' : './src/sw.js',
+		'dist/js/restaurant_info' : './src/restaurant_info.js'
 	},
 	output: {
 		filename: '[name].js',

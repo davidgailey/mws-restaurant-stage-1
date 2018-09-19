@@ -1,3 +1,26 @@
+import idb from "idb";
+
+const idbPromise = idb.open('mws-restaurant', 2, upgradeDB => {
+	switch (upgradeDB.oldVersion) {
+		case 0:
+			upgradeDB.createObjectStore('restaurants', {
+				keyPath: 'id'
+			});
+		case 1:
+			{
+				const reviewsStore = upgradeDB.createObjectStore("reviews", {
+					keyPath: "id"
+				});
+				reviewsStore.createIndex("restaurant_id", "restaurant_id");
+			
+				upgradeDB.createObjectStore("pending", {
+					keyPath: "id",
+					autoIncrement: true // this should create sequencial keys that can later be cursored over in order
+				});
+			}
+	}
+});
+
 let restaurant;
 var newMap;
 
@@ -298,8 +321,35 @@ const saveReview = () => {
 	const name = document.getElementById('name').value;
 	const rating = document.getElementById('rating').value;
 	const comment = document.getElementById('comment').value;
+	const url = DBHelper.DATABASE_REVIEWS_URL;
+	const postBody = {
+		restaurant_id: id,
+		name: name,
+		rating: rating,
+		comments: comment,
+		createdAt: Date.now()
+	}
 
 	// save review to cache
+	saveReviewToCache();
 
-	// put review in queque
+	// put review in pending request queue
+	saveReviewToPendingQueue();
+
+}
+
+const saveReviewToCache = () => {
+
+}
+
+const saveReviewToPendingQueue = () => {
+
+}
+
+const attemptPostPendingReviews = () => {
+
+}
+
+const bindReviewEvents = () => {
+	// offline and online events will kick off attempt to post pending reviews
 }
