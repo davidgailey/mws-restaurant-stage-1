@@ -61,7 +61,8 @@ self.addEventListener('fetch', fetchEvent => {
 
 	// if it is an api call, handle it with indexedDB
 	if (isAPI) {
-		const id = requestURL.pathname.split('/')[1];
+		//const id = requestURL.pathname.split('/')[1];
+		const id = new URL(event.request.url).searchParams.get("restaurant_id") - 0;
 		const isReview = requestURL.pathname.match('reviews') ? true : false;
 
 		if (isReview) {
