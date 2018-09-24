@@ -22,7 +22,7 @@ const idbPromise = idb.open('mws-restaurant', 2, upgradeDB => {
 });
 
 let restaurant;
-var newMap;
+var newMap = window.newMap;
 
 /**
  * Initialize map as soon as the page is loaded.
@@ -53,7 +53,7 @@ const initMap = () => {
 					'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 				id: 'mapbox.streets'    
 			}).addTo(newMap);
-			
+
 			fillBreadcrumb();
 			DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
 		}
