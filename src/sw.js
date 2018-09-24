@@ -168,14 +168,16 @@ const handleReviewRequest = (fetchEvent) => {
 						return data;
 					})
 				})
-		}).then(finalResponse => {
-			if (finalResponse[0].data) {
-				// convert data
-				const mapResponse = finalResponse.map(review => review.data);
-				// have to do a new response object
-				return new Response(JSON.stringify(mapResponse));
+		}).then(response => {
+			// look for data object on the response
+			if (response[0].data) {
+				// convert data using map method
+				const mappedResponse = response.map((review) => review.data);
+				// have to return a new response object
+				return new Response(JSON.stringify(mappedResponse));
 			}
-			return new Response(JSON.stringify(finalResponse));
+			// if there is no .data return the json version of the original response 
+			return new Response(JSON.stringify(response));
 		}).catch(error => {
 			return new Response("Oh Crud, there was an error", {
 				status: 500
