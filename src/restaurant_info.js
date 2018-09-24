@@ -39,7 +39,7 @@ const initMap = () => {
 		if (error) { // Got an error!
 			console.error(error);
 		} else {      
-			self.newMap = L.map('map', {
+			self.newMap = new L.Map('map', {
 				center: [restaurant.latlng.lat, restaurant.latlng.lng],
 				zoom: 16,
 				scrollWheelZoom: false
