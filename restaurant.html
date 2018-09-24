@@ -70,7 +70,7 @@
 
     <!-- Beginning reviews -->
     <section class="box" id="reviews-container">
-      <form id="submit-review" action="http://localhost:1337/reviews/">
+      <form id="submit-review" action="http://localhost:1337/reviews/" onsubmit="(function(){saveReview();return false;})()">
         <h2>Submit a Review</h2>
         <label>
           <span>Name</span>

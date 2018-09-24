@@ -331,18 +331,31 @@ const saveReview = () => {
 		rating: rating,
 		comments: comment,
 		createdAt: Date.now()
-	}
+	};
+	const method = "POST";
 
 	// save review to cache
-	saveReviewToCache();
+	saveReviewToCache(window.restaurant.id, postBody);
 
 	// put review in pending request queue
 	saveReviewToPendingQueue();
 
 }
 
-const saveReviewToCache = () => {
+const saveReviewToCache = (id, body) => {
 
+	// save to idb reviews store
+	idbPromise.then(db => {
+		const tx = db.transaction("reviews", "readwrite");
+		const store = tx.objectStore("reviews");
+		store.put({
+			id: Date.now(),
+			"byrestaurantid": id,
+			data: body
+		});
+		console.log("success putting new review in idb reviews cache");
+		return tx.complete;
+	});
 }
 
 const saveReviewToPendingQueue = () => {
@@ -356,3 +369,6 @@ const attemptPostPendingReviews = () => {
 const bindReviewEvents = () => {
 	// offline and online events will kick off attempt to post pending reviews
 }
+
+
+
