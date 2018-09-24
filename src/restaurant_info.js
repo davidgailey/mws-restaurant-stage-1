@@ -338,7 +338,7 @@ const saveReview = () => {
 	saveReviewToCache(window.restaurant.id, postBody);
 
 	// put review in pending request queue
-	saveReviewToPendingQueue();
+	saveReviewToPendingQueue(window.restaurant.id, method, postBody);
 
 }
 
@@ -358,7 +358,22 @@ const saveReviewToCache = (id, body) => {
 	});
 }
 
-const saveReviewToPendingQueue = () => {
+const saveReviewToPendingQueue = (url, method, postBody) => {
+
+	// save the review to the pending idb store so we can try to post it to the server when online
+
+	idbPromise.then(db => {
+			const tx = db.transaction("pending", "readwrite");
+			const store = tx.objectStore("pending")
+				store.put({
+					data: {url,method,postBody}
+				})
+		})
+		.catch(error => {console.error(`error saving review to pending store: ${error}`)})
+		
+		// attempt to post it?
+		//.then(DBHelper.nextPending());
+		attemptPostPendingReviews();
 
 }
 
