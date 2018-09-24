@@ -378,7 +378,7 @@ const saveReviewToPendingQueue = (url, method, postBody) => {
 }
 
 const attemptPostPendingReviews = () => {
-
+	// read from idb pending store and then make fetch call
 }
 
 const bindReviewEvents = () => {
