@@ -39,11 +39,12 @@ const initMap = () => {
 		if (error) { // Got an error!
 			console.error(error);
 		} else {      
-			self.newMap = new L.Map('map', {
+			window.newMap = L.map('map', {
 				center: [restaurant.latlng.lat, restaurant.latlng.lng],
 				zoom: 16,
 				scrollWheelZoom: false
 			});
+
 			L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
 				mapboxToken: 'pk.eyJ1IjoiZmxhdm9yZGF2ZTg4IiwiYSI6ImNqaXMwdGtqcTA1bmgzcWxnc3M2eHljYmEifQ.BkDZ94zleVJZ0GXeHyUHiw',
 				maxZoom: 18,
@@ -52,6 +53,7 @@ const initMap = () => {
 					'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 				id: 'mapbox.streets'    
 			}).addTo(newMap);
+			
 			fillBreadcrumb();
 			DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
 		}
