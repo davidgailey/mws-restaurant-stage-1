@@ -269,7 +269,7 @@ const createReviewHTML = (review) => {
 
 	const date = document.createElement('p');
 	let createdDate = new Date(review.date);
-	date.innerHTML = `${createdDate.getMonth}-${createdDate.getDate}-${createdDate.getYear} `;
+	date.innerHTML = `${createdDate.getMonth()}-${createdDate.getDate()}-${createdDate.getYear()} `;
 	li.appendChild(date);
 
 	const rating = document.createElement('p');
