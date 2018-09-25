@@ -408,36 +408,38 @@ const attemptPostPendingReviews = () => {
 		for (let field in cursor.value) {
 			console.log(cursor.value[field]);
 
+			if(field === "data"){
 
-			// attempt to do a fetch to post the review
-			let cf = cursor.value[field];
+				// attempt to do a fetch to post the review
+				let cf = cursor.value[field];
 
-			fetch(cf.url, {
-					body: JSON.stringify(cf.postBody),
-					method: cf.method
-				})
-				.then(response => {
-					// If we don't get a good response then assume we're offline
-					if (!response.ok && !response.redirected) {
-						console.log('fetch failed: ', cf);
-						return;
-					}
-				})
-				.then(() => {
-					// fetch succeeded :) delete the record from the pending store
-					const deleteTx = db.transaction('pending', 'readwrite');
-					deleteTx
-						.objectStore('pending')
-						.openCursor()
-						.then(cursor => {
-							cursor
-								.delete()
-								.then(() => {
-									console.log('deleted item from pending store');
-								})
-						})
+				fetch(cf.url, {
+						body: JSON.stringify(cf.postBody),
+						method: cf.method
+					})
+					.then(response => {
+						// If we don't get a good response then assume we're offline
+						if (!response.ok && !response.redirected) {
+							console.log('fetch failed: ', cf);
+							return;
+						}
+					})
+					.then(() => {
+						// fetch succeeded :) delete the record from the pending store
+						const deleteTx = db.transaction('pending', 'readwrite');
+						deleteTx
+							.objectStore('pending')
+							.openCursor()
+							.then(cursor => {
+								cursor
+									.delete()
+									.then(() => {
+										console.log('deleted item from pending store');
+									})
+							})
 
-				})
+					});
+			}
 		}
 		return cursor.continue().then(getEachItemAndTryToUpdateAPI);
 	}).then(function () {
