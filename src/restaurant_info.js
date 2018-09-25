@@ -396,8 +396,10 @@ const attemptPostPendingReviews = () => {
 	idbPromise.then(function (db) {
 		let tx = db.transaction('pending', 'readonly');
 		let store = tx.objectStore('pending');
-		return store.openCursor();
-	}).then(function getEachItemAndTryToUpdateAPI(cursor) {
+		return [store.openCursor(),db];
+	}).then(function getEachItemAndTryToUpdateAPI(x) {
+		let cursor = x[0];
+		let db = x[1];
 		if (!cursor) {
 			// return if we are through the list
 			return;
