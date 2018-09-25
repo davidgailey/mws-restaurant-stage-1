@@ -146,6 +146,7 @@ const handleReviewRequest = (fetchEvent) => {
 				.index("byrestaurantid")
 				.getAll(id);
 		}).then(data => {
+			console.log(data);
 			// return the retrieved data
 			// if it's not there, try a fetch
 			return (data.length && data) || fetch(fetchEvent.request)
@@ -170,6 +171,7 @@ const handleReviewRequest = (fetchEvent) => {
 					})
 				})
 		}).then(response => {
+			console.log(response);
 			// look for data object on the response
 			if (response[0].data) {
 				// convert data using map method
