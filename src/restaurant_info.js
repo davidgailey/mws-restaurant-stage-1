@@ -346,7 +346,7 @@ const saveReview = () => {
 	saveReviewToCache(window.restaurant.id, postBody);
 
 	// put review in pending request queue
-	saveReviewToPendingQueue(window.restaurant.id, method, postBody);
+	saveReviewToPendingQueue('http://localhost:1337/reviews/', method, postBody);
 
 }
 
@@ -411,7 +411,7 @@ const attemptPostPendingReviews = () => {
 			let cf = cursor.value[field];
 
 			fetch(cf.url, {
-					body: JSON.stringify(cf.body),
+					body: JSON.stringify(cf.postBody),
 					method: cf.method
 				})
 				.then(response => {
