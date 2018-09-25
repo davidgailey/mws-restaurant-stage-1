@@ -393,13 +393,13 @@ const saveReviewToPendingQueue = (url, method, postBody) => {
 
 const attemptPostPendingReviews = () => {
 	// read from idb pending store and then make fetch call
+	
 	idbPromise.then(function (db) {
+		window.db = db;
 		let tx = db.transaction('pending', 'readonly');
 		let store = tx.objectStore('pending');
-		return [store.openCursor(),db];
-	}).then(function getEachItemAndTryToUpdateAPI(x) {
-		let cursor = x[0];
-		let db = x[1];
+		return store.openCursor();
+	}).then(function getEachItemAndTryToUpdateAPI(cursor) {
 		if (!cursor) {
 			// return if we are through the list
 			return;
