@@ -320,6 +320,12 @@ const getParameterByName = (name, url) => {
 	return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
+// bind submit event to review form
+document.getElementById('submit-review').addEventListener('submit',(e)=>{
+	e.preventDefault();
+	saveReview();
+});
+
 const saveReview = () => {
 	const name = document.getElementById('name').value;
 	const rating = document.getElementById('rating').value;
