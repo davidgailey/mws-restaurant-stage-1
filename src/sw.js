@@ -8,19 +8,18 @@ const idbPromise = idb.open('mws-restaurant', 2, upgradeDB => {
 			});
 		case 1:
 			{
-				const idbReviewsStore = upgradeDB.createObjectStore("reviews", {
+				const reviewsStore = upgradeDB.createObjectStore("reviews", {
 					keyPath: "id"
 				});
-				idbReviewsStore.createIndex("byrestaurantid", "byrestaurantid");
-
-				upgradeDB.createObjectStore("pendingReviewPosts", {
+				reviewsStore.createIndex("byrestaurantid", "byrestaurantid");
+			
+				upgradeDB.createObjectStore("pending", {
 					keyPath: "id",
 					autoIncrement: true // this should create sequencial keys that can later be cursored over in order
 				});
 			}
 	}
 });
-
 
 const staticAssetsCacheName = 'mws-restaurant-static-v2';
 const assets = [

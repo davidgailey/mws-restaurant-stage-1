@@ -11,7 +11,7 @@ const idbPromise = idb.open('mws-restaurant', 2, upgradeDB => {
 				const reviewsStore = upgradeDB.createObjectStore("reviews", {
 					keyPath: "id"
 				});
-				reviewsStore.createIndex("restaurant_id", "restaurant_id");
+				reviewsStore.createIndex("byrestaurantid", "byrestaurantid");
 			
 				upgradeDB.createObjectStore("pending", {
 					keyPath: "id",
