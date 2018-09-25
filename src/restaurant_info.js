@@ -405,12 +405,15 @@ const attemptPostPendingReviews = () => {
 		console.log('Cursored at:', cursor.key);
 		for (let field in cursor.value) {
 			console.log(cursor.value[field]);
-			
+
 
 			// attempt to do a fetch to post the review
 			let cf = cursor.value[field];
 
-			fetch(cf.url, {body:JSON.stringify(cf.body),method:cf.method})
+			fetch(cf.url, {
+					body: JSON.stringify(cf.body),
+					method: cf.method
+				})
 				.then(response => {
 					// If we don't get a good response then assume we're offline
 					if (!response.ok && !response.redirected) {
@@ -431,7 +434,7 @@ const attemptPostPendingReviews = () => {
 									console.log('deleted item from pending store');
 								})
 						})
-					
+
 				})
 		}
 		return cursor.continue().then(getEachItemAndTryToUpdateAPI);
@@ -440,6 +443,17 @@ const attemptPostPendingReviews = () => {
 	});
 }
 
-const bindReviewEvents = () => {
+const bindOfflineEvents = () => {
 	// offline and online events will kick off attempt to post pending reviews
+	window.addEventListener('load', function () {
+		if(navigator.onLine){
+			// if we are online, call the function
+			attemptPostPendingReviews();
+		}else{
+			// if we are offline, add a listener for when we get back online
+			window.addEventListener('online', attemptPostPendingReviews);
+		}
+		
+		//window.addEventListener('offline', attemptPostPendingReviews);
+	});
 }
