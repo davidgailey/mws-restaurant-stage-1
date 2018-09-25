@@ -332,7 +332,7 @@ const saveReview = () => {
 	const comment = document.getElementById('comment').value;
 	const url = DBHelper.DATABASE_REVIEWS_URL;
 	const postBody = {
-		restaurant_id: id,
+		restaurant_id: window.restaurant.id,
 		name: name,
 		rating: rating,
 		comments: comment,
