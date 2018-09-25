@@ -445,7 +445,6 @@ const attemptPostPendingReviews = () => {
 
 const bindOfflineEvents = () => {
 	// offline and online events will kick off attempt to post pending reviews
-	window.addEventListener('load', function () {
 		if(navigator.onLine){
 			// if we are online, call the function
 			attemptPostPendingReviews();
@@ -455,5 +454,9 @@ const bindOfflineEvents = () => {
 		}
 		
 		//window.addEventListener('offline', attemptPostPendingReviews);
-	});
+	
 }
+
+window.addEventListener('load', function () {
+	bindOfflineEvents();
+});
