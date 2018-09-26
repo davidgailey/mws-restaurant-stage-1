@@ -65,7 +65,7 @@ self.addEventListener('fetch', fetchEvent => {
 		const isReview = requestURL.pathname.match('reviews') ? true : false;
 
 		if (isReview) {
-			handleReviewRequest(fetchEvent);
+			handleReviewRequest(fetchEvent,id);
 		} else if (typeof id !== 'undefined') {
 			handleAPIRequest(fetchEvent, id);
 		}
@@ -135,7 +135,7 @@ const handleAPIRequest = (fetchEvent, id) => {
 	);
 }
 
-const handleReviewRequest = (fetchEvent) => {
+const handleReviewRequest = (fetchEvent,id) => {
 	debugger;
 	fetchEvent.respondWith(
 		idbPromise
