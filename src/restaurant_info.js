@@ -356,6 +356,12 @@ const saveReview = () => {
 	// rerender reviews
 	fillReviewsHTML();
 
+	// reset form
+	document.getElementById('submit-review').reset();
+
+	// display thank you
+	document.getElementById('thanks').style.display = 'block';
+	
 }
 
 const saveReviewToCache = (id, body) => {
