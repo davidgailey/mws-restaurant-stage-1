@@ -75,10 +75,13 @@ self.addEventListener('fetch', fetchEvent => {
 		//const id = requestURL.pathname.split('/')[1];
 		const id = new URL(fetchEvent.request.url).searchParams.get("restaurant_id") - 0;
 		const isReview = requestURL.pathname.match('reviews') ? true : false;
+		const method = fetchEvent.request.method;
 
-		if (isReview) {
+		if (isReview && method === "GET") {
 			handleReviewRequest(fetchEvent,id);
-		} else if (typeof id !== 'undefined') {
+		} else if (isReview && method === "POST"){
+			handleReviewPost(fetchEvent,id);
+		}else if (typeof id !== 'undefined') {
 			handleAPIRequest(fetchEvent, id);
 		}
 
@@ -140,7 +143,7 @@ const handleAPIRequest = (fetchEvent, id) => {
 
 		.catch(error => {
 			console.log('error in handleAPIRequest: ', error);
-			return new Response('Something went terribly wrong!', {
+			return new Response('Something went terribly wrong!' + error, {
 				status: 500
 			});
 		})
@@ -194,9 +197,15 @@ const handleReviewRequest = (fetchEvent,id) => {
 			// if there is no .data return the json version of the original response 
 			return new Response(JSON.stringify(response));
 		}).catch(error => {
-			return new Response("Oh Crud, there was an error", {
+			return new Response("Oh Crud, there was an error: " + error, {
 				status: 500
 			})
 		})
+	);
+}
+
+const handleReviewPost = (fetchEvent,id) => {
+	fetchEvent.respondWith(
+		()=>fetch(fetchEvent.request)
 	);
 }
