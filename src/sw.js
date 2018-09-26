@@ -207,5 +207,8 @@ const handleReviewRequest = (fetchEvent,id) => {
 const handleReviewPost = (fetchEvent,id) => {
 	fetchEvent.respondWith(
 		()=>fetch(fetchEvent.request)
+		.then((response)=>{
+			console.log('handleReviewPost: ', 'response.ok ', response.ok);
+		})
 	);
 }
