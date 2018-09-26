@@ -223,7 +223,10 @@ const fillReviewsHTML = (id = self.restaurant.id) => {
 	const container = document.getElementById('reviews-container');
 	const title = document.createElement('h3');
 	title.innerHTML = 'Reviews';
-	container.appendChild(title);
+	if(container.getElementsByTagName('h3').length > 0){
+		container.appendChild(title);
+	}
+	
 
 	// api call to get reviews for a specific restaurant http://localhost:1337/reviews/?restaurant_id=<restaurant_id>
 	fetch('http://localhost:1337/reviews/?restaurant_id=' + id).then(function (response) {
@@ -239,6 +242,8 @@ const fillReviewsHTML = (id = self.restaurant.id) => {
 		}
 
 		const ul = document.getElementById('reviews-list');
+		// clean slate
+		ul.innerHTML = '';
 		for (let review of json) {
 			ul.appendChild(createReviewHTML(review));
 		}
@@ -347,6 +352,9 @@ const saveReview = () => {
 
 	// put review in pending request queue
 	saveReviewToPendingQueue('http://localhost:1337/reviews/', method, postBody);
+
+	// rerender reviews
+	fillReviewsHTML();
 
 }
 
