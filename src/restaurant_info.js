@@ -421,22 +421,25 @@ const attemptPostPendingReviews = () => {
 						// If we don't get a good response then assume we're offline
 						if (!response.ok && !response.redirected) {
 							console.log('fetch failed: ', cf);
-							return;
+							return false;
 						}
+						return true;
 					})
-					.then(() => {
-						// fetch succeeded :) delete the record from the pending store
-						const deleteTx = db.transaction('pending', 'readwrite');
-						deleteTx
-							.objectStore('pending')
-							.openCursor()
-							.then(cursor => {
-								cursor
-									.delete()
-									.then(() => {
-										console.log('deleted item from pending store');
-									})
-							})
+					.then((success) => {
+						if (success) {
+							// fetch succeeded :) delete the record from the pending store
+							const deleteTx = db.transaction('pending', 'readwrite');
+							deleteTx
+								.objectStore('pending')
+								.openCursor()
+								.then(cursor => {
+									cursor
+										.delete()
+										.then(() => {
+											console.log('deleted item from pending store');
+										})
+								})
+						}
 
 					});
 			}
