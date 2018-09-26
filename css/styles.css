@@ -190,7 +190,7 @@ nav h1 a {
 #restaurants-list p {
 	
 }
-#restaurants-list li button {
+#restaurants-list li button, form button {
 	background-color: #007521;
 	border-bottom: 3px solid #eee;
 	border-radius: 0.5em;
