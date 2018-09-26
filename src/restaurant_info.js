@@ -361,7 +361,8 @@ const saveReview = () => {
 
 	// display thank you
 	document.getElementById('thanks').style.display = 'block';
-	
+	document.getElementById('thanks').focus();
+
 }
 
 const saveReviewToCache = (id, body) => {
