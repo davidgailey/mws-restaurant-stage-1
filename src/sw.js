@@ -11,7 +11,7 @@ const idbPromise = idb.open('mws-restaurant', 2, upgradeDB => {
 				const reviewsStore = upgradeDB.createObjectStore("reviews", {
 					keyPath: "id"
 				});
-				reviewsStore.createIndex("byrestaurantid", "byrestaurantid");
+				reviewsStore.createIndex("restaurant_id", "restaurant_id");
 			
 				upgradeDB.createObjectStore("pending", {
 					keyPath: "id",
@@ -143,7 +143,7 @@ const handleReviewRequest = (fetchEvent,id) => {
 			// first attempt to get review from idb
 			return idb
 				.transaction("reviews").objectStore("reviews")
-				.index("byrestaurantid")
+				.index("restaurant_id")
 				.getAll(id);
 		}).then(data => {
 			console.log(data);
@@ -163,7 +163,7 @@ const handleReviewRequest = (fetchEvent,id) => {
 							// place each in the store by id
 							store.put({
 								id: review.id,
-								"byrestaurantid": review["byrestaurantid"],
+								"restaurant_id": review["restaurant_id"],
 								data: review
 							});
 						})

@@ -11,7 +11,7 @@ const idbPromise = idb.open('mws-restaurant', 2, upgradeDB => {
 				const reviewsStore = upgradeDB.createObjectStore("reviews", {
 					keyPath: "id"
 				});
-				reviewsStore.createIndex("byrestaurantid", "byrestaurantid");
+				reviewsStore.createIndex("restaurant_id", "restaurant_id");
 
 				upgradeDB.createObjectStore("pending", {
 					keyPath: "id",
@@ -358,7 +358,7 @@ const saveReviewToCache = (id, body) => {
 		const store = tx.objectStore("reviews");
 		store.put({
 			id: Date.now(),
-			"byrestaurantid": id,
+			"restaurant_id": id,
 			data: body
 		});
 		console.log("success putting new review in idb reviews cache");
