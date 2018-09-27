@@ -106,7 +106,7 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
 	const name = document.getElementById('restaurant-name');
 	name.innerHTML = restaurant.name;
 
-	//debugger;
+	
 	const isFavorite = typeof restaurant.is_favorite !== "undefined" && restaurant.is_favorite ? true : false;
 	const favorite = document.getElementById('restaurant-favorite');
 	favorite.dataset.state = isFavorite;

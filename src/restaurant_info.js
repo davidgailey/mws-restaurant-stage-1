@@ -107,10 +107,25 @@ const fetchRestaurantFromURL = (callback) => {
 const fillRestaurantHTML = (restaurant = self.restaurant) => {
 	const name = document.getElementById('restaurant-name');
 	name.innerHTML = restaurant.name;
+	const isFavorite = false; 
 
-	//debugger;
-	const isFavorite = typeof restaurant.is_favorite !== "undefined" && restaurant.is_favorite ? true : false;
+	if (navigator.onLine){
+		// favorite state is determined by api call or updated idb
+		isFavorite = typeof restaurant.is_favorite !== "undefined" && restaurant.is_favorite ? true : false;
+
+		// set storage to proper value
+		localStorage.setItem('favorite'+restaurant.id , isFavorite);
+
+	}else{
+
+		// get favorite state from localStorage instead in case app is offline, default to false if localStoage has no value
+		isFavorite = localStorage.getItem('favorite'+restaurant.id) || false;
+
+	}
+	
 	const favorite = document.getElementById('restaurant-favorite');
+	
+	
 	favorite.dataset.state = isFavorite;
 	favorite.dataset.id = restaurant.id;
 	favorite.querySelector('button').innerHTML = isFavorite ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
@@ -140,14 +155,22 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
 						query ? favorite.classList.add('favorited') : favorite.classList.remove('favorited');
 						// allow to click button again
 						flag = true;
+						// set storage to proper value
+						localStorage.setItem('favorite'+restaurant.id , query);
 					}
 
 				});
 
-			// if offline, update cache and add api call to queque
+		// if offline, update storage and add api call to queue
 		} else {
+			// set storage to proper value
+			localStorage.setItem('favorite'+restaurant.id , query);
 
+			// add call to queue
+			saveToPendingQueue(`http://localhost:1337/restaurants/${favorite.dataset.id}/?is_favorite=${query}`, 'PUT');
 
+			// allow to click button again
+			flag = true;
 		}
 
 
@@ -351,7 +374,7 @@ const saveReview = () => {
 	saveReviewToCache(window.restaurant.id, postBody);
 
 	// put review in pending request queue
-	saveReviewToPendingQueue('http://localhost:1337/reviews/', method, postBody);
+	saveToPendingQueue('http://localhost:1337/reviews/', method, postBody);
 
 	// rerender reviews
 	fillReviewsHTML();
@@ -381,7 +404,7 @@ const saveReviewToCache = (id, body) => {
 	});
 }
 
-const saveReviewToPendingQueue = (url, method, postBody) => {
+const saveToPendingQueue = (url, method, postBody) => {
 
 	// save the review to the pending idb store so we can try to post it to the server when online
 
@@ -402,11 +425,11 @@ const saveReviewToPendingQueue = (url, method, postBody) => {
 
 	// attempt to post it?
 	//.then(DBHelper.nextPending());
-	attemptPostPendingReviews();
+	attemptPostPendingApiCalls();
 
 }
 
-const attemptPostPendingReviews = () => {
+const attemptPostPendingApiCalls = () => {
 	// read from idb pending store and then make fetch call
 	
 	idbPromise.then(function (db) {
@@ -427,11 +450,12 @@ const attemptPostPendingReviews = () => {
 
 				// attempt to do a fetch to post the review
 				let cf = cursor.value[field];
+				let properties = {method: cf.method}
+				if(typeof cf.postBody !== "undefined"){
+					properties.body = JSON.stringify(cf.postBody);
+				}
 
-				fetch(cf.url, {
-						body: JSON.stringify(cf.postBody),
-						method: cf.method
-					})
+				fetch(cf.url, properties)
 					.then(response => {
 						// If we don't get a good response then assume we're offline
 						if (!response.ok && !response.redirected) {
@@ -469,13 +493,13 @@ const bindOfflineEvents = () => {
 	// offline and online events will kick off attempt to post pending reviews
 		if(navigator.onLine){
 			// if we are online, call the function
-			attemptPostPendingReviews();
+			attemptPostPendingApiCalls();
 		}else{
 			// if we are offline, add a listener for when we get back online
-			window.addEventListener('online', attemptPostPendingReviews);
+			window.addEventListener('online', attemptPostPendingApiCalls);
 		}
 		
-		//window.addEventListener('offline', attemptPostPendingReviews);
+		//window.addEventListener('offline', attemptPostPendingApiCalls);
 	
 }
 
