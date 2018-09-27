@@ -157,6 +157,8 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
 						flag = true;
 						// set storage to proper value
 						localStorage.setItem('favorite'+restaurant.id , query);
+
+						console.log('api updated for favorite');
 					}
 
 				});
