@@ -170,14 +170,22 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
 
 		// if offline, update storage and add api call to queue
 		} else {
+			// set state on element
+			favorite.dataset.state = query;
+			// set inner html of button
+			favorite.querySelector('button').innerHTML = query ? `${restaurant.name} is a favorite restaurant` : `${restaurant.name} is not a favorite restaurant`;
+			// set appropriate class on element
+			query ? favorite.classList.add('favorited') : favorite.classList.remove('favorited');
+			// allow to click button again
+			flag = true;
 			// set storage to proper value
 			localStorage.setItem('favorite'+restaurant.id , query);
 
 			// add call to queue
 			saveToPendingQueue(`http://localhost:1337/restaurants/${favorite.dataset.id}/?is_favorite=${query}`, 'PUT');
 
-			// allow to click button again
-			flag = true;
+			console.log('localStorage updated for favorite and request put in pending queue');
+
 		}
 
 
