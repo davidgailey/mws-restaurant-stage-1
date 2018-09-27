@@ -141,10 +141,11 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
 
 		// set flag to avoid double clicks
 		let flag;
-
+		let query = favorite.dataset.state === "true" ? false : true;
+		
 		// if online, make call to api
 		if (navigator.onLine && flag !== false) {
-			let query = favorite.dataset.state === "true" ? false : true;
+			
 			flag = false; // prevent doing fetch and setting state on multiple clicks
 			fetch(`http://localhost:1337/restaurants/${favorite.dataset.id}/?is_favorite=${query}`, {
 					method: "PUT"
