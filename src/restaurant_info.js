@@ -112,12 +112,11 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
 	if (navigator.onLine){
 		// favorite state is determined by api call or idb if no value in localStorage
 		if(localStorage.getItem('favorite'+restaurant.id)){
-			isFavorite = localStorage.getItem('favorite'+restaurant.id);
+			isFavorite = localStorage.getItem('favorite'+restaurant.id) === "true" ? true : false ;
 		}else{
 			isFavorite = typeof restaurant.is_favorite !== "undefined" && restaurant.is_favorite ? true : false;
 		}
 		
-
 		// set storage to proper value
 		localStorage.setItem('favorite'+restaurant.id , isFavorite);
 
