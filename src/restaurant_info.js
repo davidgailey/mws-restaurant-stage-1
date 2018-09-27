@@ -467,6 +467,7 @@ const attemptPostPendingApiCalls = () => {
 					.then((success) => {
 						if (success) {
 							// fetch succeeded :) delete the record from the pending store
+							console.log('fetch succeeded :) now try to delete the record from the pending store');
 							const deleteTx = db.transaction('pending', 'readwrite');
 							deleteTx
 								.objectStore('pending')
