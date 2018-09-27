@@ -151,7 +151,7 @@ const handleAPIRequest = (fetchEvent, id) => {
 }
 
 const handleReviewRequest = (fetchEvent,id) => {
-	debugger;
+	//debugger;
 	fetchEvent.respondWith(
 		idbPromise
 		.then(idb => {

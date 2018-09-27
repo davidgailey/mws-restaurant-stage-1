@@ -318,7 +318,7 @@ nav h1 a {
 }
 #restaurant-favorite button {
 	position: absolute;
-	left: 9999px;
+	left: -9999px;
 }
 #restaurant-favorite .heart {
 	fill: #eeeeee;
