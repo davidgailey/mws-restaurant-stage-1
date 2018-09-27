@@ -123,7 +123,7 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
 	}else{
 
 		// get favorite state from localStorage instead in case app is offline, default to false if localStoage has no value
-		isFavorite = localStorage.getItem('favorite'+restaurant.id) || false;
+		isFavorite = localStorage.getItem('favorite'+restaurant.id) === "true" ? true : false;
 
 	}
 	
