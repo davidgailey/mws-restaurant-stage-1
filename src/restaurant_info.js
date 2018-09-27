@@ -107,7 +107,7 @@ const fetchRestaurantFromURL = (callback) => {
 const fillRestaurantHTML = (restaurant = self.restaurant) => {
 	const name = document.getElementById('restaurant-name');
 	name.innerHTML = restaurant.name;
-	const isFavorite = false; 
+	let isFavorite = false; 
 
 	if (navigator.onLine){
 		// favorite state is determined by api call or updated idb
